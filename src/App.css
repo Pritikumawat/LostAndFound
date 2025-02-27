@@ -1,9 +1,19 @@
 @import "tailwindcss";
+
 #root {
-  max-width: 1280px;
-  
+  /* max-width: 1280px; */
+
   /* padding: 2rem; */
   text-align: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #dbddee, #72ffbdb4);
+  overflow: hidden;
 }
 
 .logo {
@@ -12,9 +22,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -23,6 +35,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

@@ -1,0 +1,11 @@
+#linkTag:visited,
+#linkTag:active,
+#linkTag:focus #linkTag {
+    text-decoration: none;
+    color: black;
+}
+
+#linkTag:hover {
+    text-decoration: none;
+    color: #374151;
+}

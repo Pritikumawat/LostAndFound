@@ -1,0 +1,138 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #dbddee, #72ffbdb4);
+    overflow: hidden;
+}
+
+/* Container */
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #000;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #000;
+}
+
+/* Input Fields */
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(6, 6, 6, 0.4);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #000;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #4e8bff;
+    box-shadow: 0 0 8px rgba(78, 139, 255, 0.6);
+}
+
+.input-field::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Submit Button */
+.btn {
+    padding: 15px;
+    background-color: #127e46;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3575e5;
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Toggle Text */
+.toggle-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #000;
+    font-size: 1rem;
+}
+
+.toggle-text span {
+    color: #216d23;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.toggle-text span:hover {
+    color: #0d7acc;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px;
+    }
+}

@@ -9,7 +9,7 @@ const Login = () => {
     };
 
     return (
-        <div className="container">
+        <div className="container login-container">
             <div className="form-container">
                 <h1>{isSignup ? "Signup" : "Login"}</h1>
                 <h2>Welcome {isSignup ? "to our platform!" : "back! Please enter your details."}</h2>
@@ -28,7 +28,7 @@ const Login = () => {
                 </form>
 
                 <p className="toggle-text">
-                    {isSignup ? "Already have an account?" : "Don't have an account?"}  
+                    {isSignup ? "Already have an account?" : "Don't have an account?"}
                     <span onClick={toggleForm}>{isSignup ? " Login" : " Signup"}</span>
                 </p>
             </div>

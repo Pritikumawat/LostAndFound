@@ -1,4 +1,4 @@
-#linkTag:visited,
+/* #linkTag:visited,
 #linkTag:active,
 #linkTag:focus #linkTag {
     text-decoration: none;
@@ -8,4 +8,57 @@
 #linkTag:hover {
     text-decoration: none;
     color: #374151;
-}
+} */
+ /* Navbar Styling */
+.navbar {
+    background: rgba(187, 242, 230, 0.9); /* Soft pastel background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* border-bottom: 3px solid #ffa69e; Gradient border effect */
+  }
+  
+  /* Navbar Links */
+  .navbar a {
+    color: #28527a; /* Darker contrast for readability */
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 15px;
+  }
+  
+  .navbar a:hover {
+    color: #ff686b; /* Soft hover color */
+    transform: translateY(-2px);
+  }
+  .navhead{
+    color: #28527a
+  }
+  /* Mobile Menu */
+  .mobile-menu {
+    background: #faf3dd;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mobile-menu a {
+    display: block;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  .mobile-menu a:hover {
+    background: #ffa69e;
+    color: white;
+  }
+  
+  /* Mobile Menu Button */
+  .menu-button {
+    background: #2c6973;
+    border-radius: 8px;
+    padding: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-button:hover {
+    background: #99cfd8;
+  }
+  

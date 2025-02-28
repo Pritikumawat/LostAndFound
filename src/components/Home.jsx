@@ -1,27 +1,33 @@
-import React from 'react'
-import Navbar from './Navbar'
-import MapComponent from './Mapcomponent'
-import Footer from './footer'
+import React from "react";
+import Navbar from "./Navbar";
+import MapComponent from "./Mapcomponent";
+import Footer from "./Footer";
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <div className="flex flex-col md:flex-row items-center gap-6 p-6">
-        {/* Text Section */}
-        <div className="text-3xl font-bold text-gray-800 md:w-1/3">
-          Find & Recover with ease
-        </div>
+      <div className="flex flex-col items-center flex-grow justify-center p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-fade-in flex-grow items-center">
+          {/* Left Side - Text */}
+          <div className="flex flex-col justify-center space-y-4 animate-slide-in-left">
+            <h1 className="text-3xl font-bold">Find & Recover with Ease</h1>
+            <p className="text-lg text-gray-700">
+              Lost something? Found an item? Our platform helps you connect with
+              people who might have your lost belongings.
+            </p>
+          </div>
 
-        {/* Map Section */}
-        <div className="md:w-[600px] md:h-[400px] w-full h-[300px] shadow-lg border rounded-lg overflow-hidden">
-          <MapComponent />
+          {/* Right Side - Map */}
+          {/* <div className="bg-white rounded-lg shadow-lg p-4 animate-slide-in-right w-full flex justify-center">
+            <div className="relative w-full h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] overflow-hidden rounded-lg"> */}
+          <div className="bg-white rounded-lg shadow-lg p-4 w-full flex justify-center relative overflow-hidden">
+            {/* <div className="w-full "> */}
+            <MapComponent className="w-full h-full z-0 rounded-lg" />
+            {/* </div> */}
+          </div>
         </div>
       </div>
-
-      <Footer />
-
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

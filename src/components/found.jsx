@@ -5,6 +5,8 @@ import axios from "axios";
 const Found = () => {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState(""); // ✅ Category Filter
+  const [locationFilter, setLocationFilter] = useState(""); // ✅ Location Filter
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,28 +32,46 @@ const Found = () => {
   return (
     <div className="mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6 text-center">Found Items</h2>
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
 
-      {/* Search & Report Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0 md:space-x-10">
-        <div className="w-full md:w-1/2 flex justify-end">
-          <input
-            type="text"
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm"
-            placeholder="Search found items..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div>
-          <button
-            className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600"
-            onClick={() => navigate("/report?status=found")}
-          >
-            Report Found Item
-          </button>
-        </div>
+        <input
+          className="w-full sm:w-[30%] min-w-[180px] p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 border border-gray-300"
+          placeholder="Search by name..."
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        <select value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          className="w-full sm:w-[30%] min-w-[120px] p-3 border border-gray-300 rounded-lg outline-none bg-white hover:bg-gray-100"
+        >
+          <option value="">All Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Wallet">Wallet</option>
+          <option value="Documents">Documents</option>
+          <option value="Others">Others</option>
+        </select>
+
+        <select
+          value={locationFilter}
+          onChange={(e) => setLocationFilter(e.target.value)}
+          className="w-full sm:w-[30%] min-w-[120px] p-3 border border-gray-300 rounded-lg outline-none bg-white hover:bg-gray-100"
+        >
+          <option value="">All Locations</option>
+          {items.map((item) => (
+            <option key={item._id} value={item.placeName}>
+              {item.placeName}
+            </option>
+          ))}
+        </select>
+
+        <button onClick={() => navigate("/report?status=found")}
+          className="w-full sm:w-auto bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+        >
+          Report Found Item
+        </button>
       </div>
-
       {/* Found Items List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedItems.length > 0 ? (
@@ -62,13 +82,13 @@ const Found = () => {
               onClick={() => navigate(`/claim/${item._id}`)} // ✅ Navigates to Claim Form
             >
               {console.log("Image URL:", item.imageUrl)} {/* ✅ Debugging Image URL */}
-              
+
               <img
                 src={item.imageUrl ? `http://localhost:5000${item.imageUrl}` : "/default-image.png"}
                 alt={item.name}
                 className="w-full h-48 object-cover rounded-md"
               />
-              
+
               <h3 className="text-lg font-bold mt-2">{item.name}</h3>
               <p className="text-gray-600">Location: {item.location || "Unknown"}</p>
               <p className="text-gray-500 text-sm">

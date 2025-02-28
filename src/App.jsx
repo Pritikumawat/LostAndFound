@@ -18,13 +18,12 @@ const Layout = ({ children }) => (
   //   <main className="flex-grow pt-16">{children}</main> {/* ✅ Pushes footer down */}
   //   <Footer className="mt-auto" /> {/* ✅ Keeps footer at bottom */}
   // </div>
-  <div className="flex flex-col h-screen overflow-hidden justify-center items-center">
-    {" "}
+  <div className="flex flex-col h-screen overflow-hidden justify-center items-center w-full">
     {/* ✅ Ensures full height */}
-    <Navbar className="fixed top-0 w-full z-50 shadow-md overflow-auto" />
+    <Navbar className="fixed top-0 w-full z-50 shadow-md overflow-auto w-full" />
     <main className="pt-16 pb-16 overflow-auto">{children}</main>{" "}
     {/* ✅ Pushes footer down */}
-    <Footer className="bottom-0 w-full z-50" />{" "}
+    <Footer className="bottom-0 w-screen z-50 w-full" />{" "}
     {/* ✅ Keeps footer at bottom */}
   </div>
   // </>
@@ -32,7 +31,7 @@ const Layout = ({ children }) => (
 const App = () => {
   return (
     <>
-      <Layout>
+      <Layout className="w-screen">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />

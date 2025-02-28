@@ -58,51 +58,42 @@ const Lost = () => {
   return (
     <div className="mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6 text-center">Lost Items</h2>
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
 
-      {/* 🔍 Single Search Bar with Category & Location Filters */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0">
-        <div className="flex w-full md:w-2/3 border border-gray-300 rounded-lg shadow-sm bg-white">
-          {/* 🔍 Search Input */}
-          <input
-            type="text"
-            className="w-full p-3 rounded-l-lg outline-none"
-            placeholder="Search by name..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <input
+          className="w-full sm:w-[30%] min-w-[180px] p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 border border-gray-300"
+          placeholder="Search by name..."
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
 
-          {/* 📂 Category Dropdown */}
-          <select
-            className="p-3 border-l outline-none"
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Wallet">Wallet</option>
-            <option value="Documents">Documents</option>
-            <option value="Others">Others</option>
-          </select>
+        <select value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          className="w-full sm:w-[30%] min-w-[120px] p-3 border border-gray-300 rounded-lg outline-none bg-white hover:bg-gray-100"
+        >
+          <option value="">All Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Wallet">Wallet</option>
+          <option value="Documents">Documents</option>
+          <option value="Others">Others</option>
+        </select>
 
-          {/* 📍 Location Dropdown */}
-          <select
-            className="p-3 border-l outline-none rounded-r-lg"
-            value={locationFilter}
-            onChange={(e) => setLocationFilter(e.target.value)}
-          >
-            <option value="">All Locations</option>
-            {items.map((item) => (
-              <option key={item._id} value={item.placeName}>
-                {item.placeName}
-              </option>
-            ))}
-          </select>
-        </div>
+        <select
+          value={locationFilter}
+          onChange={(e) => setLocationFilter(e.target.value)}
+          className="w-full sm:w-[30%] min-w-[120px] p-3 border border-gray-300 rounded-lg outline-none bg-white hover:bg-gray-100"
+        >
+          <option value="">All Locations</option>
+          {items.map((item) => (
+            <option key={item._id} value={item.placeName}>
+              {item.placeName}
+            </option>
+          ))}
+        </select>
 
-        {/* ➕ Report Lost Item Button */}
-        <button
-          className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600"
-          onClick={() => navigate("/report?status=lost")}
+        <button onClick={() => navigate("/report?status=lost")}
+          className="w-full sm:w-auto bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
         >
           Report Lost Item
         </button>

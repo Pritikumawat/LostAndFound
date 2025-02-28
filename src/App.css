@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 body {
-  background: linear-gradient(to right, #ffa69e, #faf3dd, #b8f2e6);
+  /* background: linear-gradient(to right, #ffa69e, #faf3dd, #b8f2e6); */
+  background: linear-gradient(145deg, #ffa69e 10%, #faf3dd 50%, #b8f2e6 100%);
   font-family: sans-serif;
 }
 
@@ -9,5 +10,6 @@ body {
 /* Removed overflow: hidden (was cutting off content) */
 
 .pt-16 {
-  padding-top: 4rem; /* Adjusted to match Navbar height */
+  padding-top: 4rem;
+  /* Adjusted to match Navbar height */
 }

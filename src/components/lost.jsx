@@ -93,7 +93,7 @@ const Lost = () => {
         </select>
 
         <button onClick={() => navigate("/report?status=lost")}
-          className="w-full sm:w-auto bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+          className="w-full sm:w-auto bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
         >
           Report Lost Item
         </button>

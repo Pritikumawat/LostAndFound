@@ -6,10 +6,6 @@ body {
   font-family: sans-serif;
 }
 
-/* Removed height: 100vh (was preventing scrolling) */
-/* Removed overflow: hidden (was cutting off content) */
-
 .pt-16 {
   padding-top: 4rem;
-  /* Adjusted to match Navbar height */
 }

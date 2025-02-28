@@ -1,7 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
 import MapComponent from "./Mapcomponent";
-import Footer from "./Footer";
 const Home = () => {
   return (
     <>
@@ -17,10 +15,7 @@ const Home = () => {
           </div>
 
           {/* Right Side - Map */}
-          {/* <div className="bg-white rounded-lg shadow-lg p-4 animate-slide-in-right w-full flex justify-center">
-            <div className="relative w-full h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] overflow-hidden rounded-lg"> */}
           <div className="bg-white rounded-lg shadow-lg p-4 w-full flex justify-center relative overflow-hidden">
-            {/* <div className="w-full "> */}
             <MapComponent className="w-full h-full z-0 rounded-lg" />
             {/* </div> */}
           </div>

@@ -13,9 +13,9 @@ const Navbar = () => {
           <div className="flex justify-between h-16 items-center">
             {/* Logo */}
             <div className="flex-shrink-0 navhead">
-            <p className="text-xl font-bold py-2 ">
-              Lost & Found
-            </p>
+              <p className="text-xl font-bold py-2 ">
+                TrackBack
+              </p>
             </div>
 
             {/* Desktop Menu */}
@@ -23,7 +23,7 @@ const Navbar = () => {
               <Link to="/home">Home</Link>
               <Link to="/lost">Lost Items</Link>
               <Link to="/found">Found Items</Link>
-              <Link to="/login">Login</Link>
+              <Link to="/feedback">Feedback</Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -44,11 +44,11 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="mobile-menu md:hidden text-center py-4 space-y-4">
+          <div className="mobile-menu md:hidden text-center space-y-2 z-[9999]">
             <Link to="/home">Home</Link>
             <Link to="/lost">Lost Items</Link>
             <Link to="/found">Found Items</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/feedback">Feedback</Link>
           </div>
         )}
       </nav>

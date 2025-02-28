@@ -40,7 +40,9 @@ router.post("/verify-claim", upload.single("proofImage"), async (req, res) => {
       html: `
         <p><b>${name}</b> wants to claim your lost item <b>${item.name}</b>.</p>
         <p>Email: ${email}</p>
-        <p>Proof Image: <a href="http://localhost:5000/uploads/${req.file.filename}">View Proof</a></p>
+        <p>Proof Image:</p>
+    <img src="http://localhost:5000/uploads/${req.file.filename}" width="300"/>
+    <p><a href="http://localhost:5000/uploads/${req.file.filename}">View Proof</a></p>
         <p>If this is your item, please confirm.</p>
       `,
     };

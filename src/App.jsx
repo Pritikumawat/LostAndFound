@@ -9,12 +9,13 @@ import Footer from "./components/Footer";
 import Verified from "./components/Verified";
 import Report from "./components/Report";
 import ClaimForm from "./components/ClaimForm";
+import Feedback from "./components/Feedback";
 
 const Layout = ({ children }) => (
   <div className="flex flex-col h-screen overflow-hidden justify-center items-center w-full">
-    <Navbar className="fixed top-0 w-full z-50 shadow-md overflow-auto w-full" />
+    <Navbar className="fixed top-0 z-50 shadow-md overflow-auto w-full" />
     <main className="pt-16 pb-16 overflow-auto">{children}</main>
-    <Footer className="bottom-0 w-screen z-50 w-full" />
+    <Footer className="bottom-0 z-50 w-full" />
   </div>
 );
 const App = () => {
@@ -29,7 +30,8 @@ const App = () => {
           <Route path="/verified/:id" element={<Verified />} />
           <Route path="/report" element={<Report />} />
           <Route path="/claim/:id" element={<ClaimForm />} />
-        </Routes>
+          <Route path="/feedback" element={<Feedback/>} />
+       </Routes>
       </Layout>
     </>
   );

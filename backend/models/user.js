@@ -1,11 +1,13 @@
 //sign up ka user data
 const mongoose = require("mongoose");
+const multer = require("multer");
 
 const userSchema = new mongoose.Schema({
     name: {
       type: String,
       required: true
     },
+    username: { type: String, unique: true },
     email: {
       type: String,
       required: true,

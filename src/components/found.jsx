@@ -14,21 +14,42 @@ const Found = () => {
       .get("http://localhost:5000/api/found-items")
       .then(async (response) => {
         let fetchedItems = Array.isArray(response.data) ? response.data : [];
-
-        setItems(fetchedItems);
+// ✅ Fetch place names for items with latitude & longitude
+const updatedItems = await Promise.all(
+  fetchedItems.map(async (item) => {
+    if (item.lat && item.lng) {
+      const placeName = await getPlaceName(item.lat, item.lng);
+      return { ...item, placeName };
+    }
+    return { ...item, placeName: "Unknown Location" };
+  })
+);
+        setItems(updatedItems);
       })
       .catch((error) => {
         console.error("Error fetching found items:", error);
         setItems([]); // ✅ Prevent errors if API fails
       });
   }, []);
-
-  // ✅ Filter items only when searchTerm is not empty
-  const displayedItems =
-    searchTerm === ""
-      ? items
-      : items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
-
+    // ✅ Function to fetch location name using Nominatim API
+    const getPlaceName = async (lat, lon) => {
+      try {
+          const response = await axios.get(
+              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+          );
+          return response.data.display_name || "Unknown Location";
+      } catch (error) {
+          console.error("Error fetching place name:", error);
+          return "Unknown Location";
+      }
+  };
+  // ✅ Filter items based on Search, Category & Location
+  const displayedItems = items.filter((item) => {
+    const matchesSearch = searchTerm === "" || item.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = categoryFilter === "" || item.category === categoryFilter;
+    const matchesLocation = locationFilter === "" || item.placeName.toLowerCase().includes(locationFilter.toLowerCase());
+    return matchesSearch && matchesCategory && matchesLocation;
+  });
   return (
     <div className="mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6 text-center">Found Items</h2>
@@ -74,6 +95,7 @@ const Found = () => {
       </div>
       {/* Found Items List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {console.log(displayedItems)}
         {displayedItems.length > 0 ? (
           displayedItems.map((item) => (
             <div
@@ -90,7 +112,7 @@ const Found = () => {
               />
 
               <h3 className="text-lg font-bold mt-2">{item.name}</h3>
-              <p className="text-gray-600">Location: {item.location || "Unknown"}</p>
+              <p className="text-gray-600">Location: {item.placeName || "Unknown"}</p>
               <p className="text-gray-500 text-sm">
                 Date: {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "Unknown"}
               </p>

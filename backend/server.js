@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const itemRoutes = require("./routes/itemRoutes");
 const claimRoutes = require("./routes/claimRoutes");
 const FoundclaimRoutes = require("./routes/FoundclaimRoutes");
+const feedbackRoutes = require("./routes/feedbackRoutes");
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 app.use('/api', itemRoutes);  
 app.use("/api", claimRoutes); // ✅ Claim Request Routes
 app.use("/api", FoundclaimRoutes);
+app.use("/api/feedback", feedbackRoutes);
 
 
   app.listen(5000, () => console.log(`🚀 Server running on port 5000`));

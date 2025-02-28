@@ -32,7 +32,7 @@ const ReportItem = () => {
 
   // ✅ Handle map location selection
   const handleMapSelect = (lat, lng, placeName) => {
-    setFormData({ ...formData, lat, lng, location: placeName });
+    setFormData({ ...formData, lat, lng, location: placeName || `Lat: ${lat}, Lng: ${lng}` });
   };
 
   // ✅ Submit Form
@@ -145,7 +145,7 @@ const ReportItem = () => {
         <input
           type="text"
           name="contact"
-          placeholder="Contact Info"
+          placeholder="Email"
           value={formData.contact}
           onChange={handleChange}
           className="w-full p-2 border rounded"
@@ -159,13 +159,14 @@ const ReportItem = () => {
           className="w-full p-2 border rounded"
           required
         />
-
         <button
           type="submit"
           className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
         >
           Report this {isLost ? "Lost" : "Found"} Item
         </button>
+        {console.log("Form Data before submitting:", formData)}
+
       </form>
     </div>
   );

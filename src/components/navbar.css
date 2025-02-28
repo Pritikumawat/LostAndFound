@@ -1,5 +1,5 @@
 .navbar {
-    background: rgba(187, 242, 230, 0.9);
+    background: linear-gradient(145deg, #b8f2e6, #faf3dd);
     /* Soft pastel background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* border-bottom: 3px solid #ffa69e; Gradient border effect */

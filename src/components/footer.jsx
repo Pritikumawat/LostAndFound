@@ -6,7 +6,7 @@ export default function Footer() {
       <footer className="flex flex-col md:flex-row items-center justify-between">
         {/* Left Side - Copyright */}
         <p className="text-sm md:text-base font-semibold text-[#28527a]">
-          &copy; 2024 Lost & Found | All Rights Reserved
+          &copy; 2025 TrackBack | All Rights Reserved
         </p>
 
         {/* Right Side - Navigation Links */}

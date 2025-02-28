@@ -125,12 +125,13 @@
 // export default ReportItem;
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
-import MapReport from "./MapReport"; // ✅ Using MapReport for selecting location
+import { useNavigate, useSearchParams } from "react-router-dom"; // ✅ useSearchParams used
+import MapReport from "./MapReport"; // ✅ Map for selecting location
 
 const ReportItem = () => {
-  const location = useLocation();
-  const isLost = location.pathname.includes("lost");
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams(); // ✅ Get Query Parameters
+  const isLost = searchParams.get("status") === "lost"; // ✅ Check if 'status' is 'lost' or 'found'
 
   const [formData, setFormData] = useState({
     name: "",
@@ -143,8 +144,6 @@ const ReportItem = () => {
     lat: "",
     lng: "",
   });
-
-  const navigate = useNavigate();
 
   // ✅ Update input fields
   const handleChange = (e) => {
@@ -181,8 +180,9 @@ const ReportItem = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-lg">
+      {/* ✅ Dynamic Header Based on Lost or Found */}
       <h2 className="text-2xl font-bold mb-4 text-center">
-        Report {isLost ? "Lost" : "Found"} Item
+        {isLost ? "Report Lost Item" : "Report Found Item"}
       </h2>
 
       <form
@@ -208,6 +208,24 @@ const ReportItem = () => {
           required
         ></textarea>
 
+        {/* ✅ New Category Dropdown */}
+        <label className="block font-medium text-gray-700">Category:</label>
+        <select
+          name="category"
+          value={formData.category}
+          onChange={handleChange}
+          className="w-full p-2 border rounded bg-white"
+          required
+        >
+          <option value="Electronics">Electronics</option>
+          <option value="Wallet">Wallet</option>
+          <option value="Documents">Documents</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Keys">Keys</option>
+          <option value="Jewelry">Jewelry</option>
+          <option value="Others">Others</option>
+        </select>
+
         {/* ✅ New Map Component for Selecting Location */}
         <label className="block font-medium text-gray-700">
           Mark {isLost ? "Last Seen" : "Found"} Location:
@@ -225,8 +243,8 @@ const ReportItem = () => {
           readOnly
           className="w-full p-2 border rounded bg-gray-100"
           required
-              />
-              
+        />
+
         {/* ✅ Marked Latitude & Longitude Fields */}
         <div className="grid grid-cols-2 gap-4">
           <input
